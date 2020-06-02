@@ -855,13 +855,13 @@ class ListaAluguel(QMainWindow, PeqAluguel, BancoDados):
         msg.exec_()
 
     def devolvendo(self):
-        dev = AlteraVeiculo()
-        dev.rbAlugado.setChecked(False)
-        dev.rbDisponivel.setChecked(True)
-        status = dev.rbDisponivel.text()
-        texto = 'UPDATE Veiculo SET Alugado=? WHERE CodVeiculo=?'
-        self.cursor.execute(texto, (status, self.codveicu))
-        print(status, self.codveicu)
+        new_km = self.inputKmEntrada.text()
+        texto = 'UPDATE OR IGNORE Veiculo SET Alugado=? WHERE CodVeiculo=?'
+        self.cursor.execute(texto, ('Não', self.codveicu))
+        self.conexao.commit()
+        texto = 'UPDATE OR IGNORE Veiculo SET KmAtual=? WHERE CodVeiculo=?'
+        self.cursor.execute(texto, (new_km, self.codveicu))
+        self.conexao.commit()
 
 
 if __name__ == '__main__':
@@ -869,4 +869,3 @@ if __name__ == '__main__':
     app = Main()
     app.show()
     qt.exec_()
-    # vai = TelaLista()
