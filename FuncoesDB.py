@@ -1,8 +1,4 @@
 import sqlite3
-from PyQt5.QtSql import QSqlDatabase
-from PyQt5.QtSql import QSqlQuery
-from PyQt5.QtWidgets import QTableWidgetItem
-from View_Projeto.Pesquisar_Cliente import PeqCliente
 
 
 class BancoDados:

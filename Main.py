@@ -1,3 +1,4 @@
+# Main do app
 import sqlite3
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QMessageBox
